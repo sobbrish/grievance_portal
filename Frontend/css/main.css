@@ -1,0 +1,14 @@
+*{
+    box-sizing: border-box;
+}
+
+body,html{
+    background-color:#f15380;
+    
+    font-family: Bitcount, Arial;
+    margin: 0;
+}
+
+p,h1{
+    margin: 0;
+}

@@ -1,0 +1,26 @@
+{
+  "name": "dani's-grievance-portal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon Backend/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sobbrish/grievance_portal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/sobbrish/grievance_portal/issues"
+  },
+  "homepage": "https://github.com/sobbrish/grievance_portal#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
+  }
+}
