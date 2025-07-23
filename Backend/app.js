@@ -37,6 +37,9 @@ app.post('/login', (req, res) => {
   }
 });
 
+app.get('/form', (req,res) =>{
+    res.render('form')
+});
 
 app.listen(4000, () => {
   console.log('Server running at http://localhost:4000');
