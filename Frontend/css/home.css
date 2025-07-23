@@ -24,6 +24,12 @@ p,h1{
     
 }
 
+.big-div#blur.active {
+  filter:blur(20px);
+  pointer-events: none;
+  user-select: none;
+}
+
 
 .title{
     font-size: 100px;

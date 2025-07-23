@@ -11,28 +11,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Bitcount:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="big-div">
+    <div class="big-div" id="blur">
         <div class="texts">
             <h1 class="title">Hello Danica</h1>
             <p class="description">Welcome to your personalized grievance portal where your claims and complaints are directed to the great Sophia herself!!!</p>
         </div>
         <div class="buttons">
-            <button class="login-btn">Login Here!!</button>
+            <button class="login-btn" onclick="toggle()">Login Here!!</button>
 
         </div>
 
-        <div class="modal">
-            <div class="modal-box">
-                <p>!!! Dislaimer !!! </p>
-                <p>!!! Leave Immediately If You Are Not Danica !!!</p>
-                <img class="dani-photo" src="dani.jpg" alt="Princess Danica">
-                <p class="name">Danica Lisaca</p>
-                <input class="user" placeholder="❤ Username" type="text">
-                <input class="password" placeholder="❤ Password" type="text">
-                <button>Im Danica</button>
-            </div>
-        </div>
+    </div>
 
+    <div class="modal" id="popup">
+        <div class="modal-box">
+            <button class="close" onclick="toggle()"> x </button>
+            <p>!!! Dislaimer !!! </p>
+            <p>!!! Leave Immediately If You Are Not Danica !!!</p>
+            <img class="dani-photo" src="dani.jpg" alt="Princess Danica">
+            <p class="name">Danica Lisaca</p>
+            <input class="user" placeholder="❤ Username" type="text">
+            <input class="password" placeholder="❤ Password" type="text">
+            <button>Im Danica</button>
+            
+        </div>
     </div>
 
     
