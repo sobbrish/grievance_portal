@@ -1,0 +1,15 @@
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    background-color: #000000;
+    color: #ff0000;
+    font-family: Arial;
+    margin: 0;
+}
+
+p, h1 {
+    text-align: center;
+    font-size: 60px;
+}

@@ -7,9 +7,10 @@ const bodyParser = require('body-parser');
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, '../Frontend')));
+app.use(express.static('Frontend')); //i need this for my audio
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Fake login page
+// Fake login page 'welcoming page'
 app.get('/', (req, res) => {
   res.render('index'); // login form page
 });
@@ -19,6 +20,11 @@ app.get('/main', (req, res) => {
   res.render('main'); // only shown after login
 });
 
+//Route to DENY the wrong person (after wrong login)
+app.get('/DENIED', (req, res) => {
+  res.render('DENIED'); // only shown after login
+});
+
 // POST login: only Danica allowed
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
@@ -26,7 +32,8 @@ app.post('/login', (req, res) => {
   if (username === 'danica' && password === 'secret123') {
     res.redirect('/main');
   } else {
-    res.send('Access denied. Only Danica can use this site.');
+    res.redirect('/DENIED');
+    //res.send('Access denied. Only Danica can use this site.');
   }
 });
 
