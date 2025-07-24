@@ -26,7 +26,7 @@
             <div class="dialogue-box">
                 <div class="main">
                     <div class="name-tag"> Sophia </div>
-                    <div class="dialogue" style="background-image: url('dialogue-bg.png'); "> <p>"Whatever we say here"</p>   <p class="date"></p></div>
+                    <div class="dialogue" style="background-image: url('dialogue-bg.png'); "> <p id="msg"></p>   <p class="date"></p></div>
                     
                 </div>
 
@@ -57,7 +57,7 @@
             <div class="dialogue-box">
                 <div class="main">
                     <div class="name-tag"> Danica </div>
-                    <div class="dialogue" style="background-image: url('dialogue-bg.png');"> <p>"I am danica"</p>   <p class="date"></p></div>
+                    <div class="dialogue" style="background-image: url('dialogue-bg.png');"> <p id="msg">"I am danica"</p>   <p class="date"></p></div>
 
                 </div>
 
@@ -110,6 +110,16 @@
                 
         });
         
+        var showText = function (target, message, index, interval) {   
+            if (index < message.length) {
+                $(target).append(message[index++]);
+                setTimeout(function () { showText(target, message, index, interval); }, interval);
+            }
+        }
+
+        $(function () {
+            showText("#msg", "Whatever we say here", 0, 500);   
+        });
 
         
     </script>
