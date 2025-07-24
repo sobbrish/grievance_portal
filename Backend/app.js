@@ -29,7 +29,7 @@ app.get('/DENIED', (req, res) => {
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
 
-  if (username === 'danica' && password === 'secret123') {
+  if (username === 'danica' && password === '123') {
     res.redirect('/main');
   } else {
     res.redirect('/DENIED');

@@ -1,0 +1,176 @@
+*{
+    box-sizing: border-box;
+}
+
+body,html{
+    background-color:#f15380;
+    
+    font-family: Bitcount, Arial;
+    margin: 0;
+}
+
+p,h1{
+    margin: 0;
+}
+
+
+
+.big-div{
+    border: 10px #f78dbb solid;
+    display: flex;
+    flex-direction: column ;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 40px;
+    height: 100vh;
+    max-width: 100%;
+    margin: auto;
+    
+}
+
+form{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: end;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.dialogue-box{
+    margin-top: 40px;
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 100%;
+    max-height: 200px;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    
+    
+}
+
+.main{
+    width: 100%;
+  
+    flex: 1;
+}
+
+.next{
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+}
+
+.next button{
+    /* padding: 10px 15px; */
+    width: 90px;
+    height: 40px;
+    font-family: Bitcount, Arial;
+    font-size: 17px;
+    background-color: #f72d66;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.next button:hover{
+    opacity: 0.8;
+}
+
+.dialogue{
+
+    height: 75%;
+    background-size: contain;
+    background-position: center;
+    border: 3px rgb(255, 210, 232) solid;
+    border-radius: 10px;
+    padding: 20px 30px;
+    color: white;
+    font-size: 22px;
+    font-family: Arial;
+    text-shadow:
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
+    position: relative;
+}
+
+.date{
+    position: absolute;
+    bottom: 3px;
+    right: 10px;
+    color: white;
+    font-family: Arial;
+    font-size: 15px;
+}
+
+.name-tag{
+    background-color: rgb(233, 217, 225);
+    width: 90px;
+    height: 25px;
+    text-align: center;
+    padding: 4px 2px 2px 2px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    position: absolute;
+    top: -25px;
+    left: 10px;
+    color: rgb(250, 252, 249);
+    text-shadow:
+    -1px -1px 0 rgb(201, 120, 174),
+     1px -1px 0 rgb(201, 120, 174),
+    -1px  1px 0 rgb(201, 120, 174),
+     1px  1px 0 rgb(201, 120, 174);
+
+}
+
+
+/* 
+.moods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.moods button {
+  font-size: 1.8rem;
+  padding: 10px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.moods button:hover {
+  transform: scale(1.2);
+} */
+
+
+.human{
+    width: 50%;
+    max-width: 500px;
+    margin-right: 50px;
+}
+
+#sophia{
+    margin-bottom: -52px;
+}
+
+#danica{
+    margin-bottom: -43px;
+}
+
+.visible{
+    display:flex;
+}
+
+.hidden{
+    display: none;
+}

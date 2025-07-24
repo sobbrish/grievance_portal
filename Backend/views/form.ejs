@@ -5,8 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grievance Portal</title>
     <link rel="stylesheet" href="/css/form.css">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <p>Hello</p>    
+    <div id="1" class="big-div visible">
+        <form style="background-image: url(form-bg.png);">
+            
+            <img class="human" id="sophia" src="SOPHIA_BUFF_MAN.png">
+
+            <div class="dialogue-box">
+                <div class="main">
+                    <div class="name-tag"> Sophia </div>
+                    <div class="dialogue" style="background-image: url('dialogue-bg.png');"> <p>"Whatever we say here"</p>   <p class="date"></p></div>
+
+                </div>
+
+                <div class="next">
+                    <button>Next</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+    <div id="2" class="big-div hidden">
+        <form style="background-image: url(form-bg.png);">
+            <!-- <div class="moods">
+                <button class="happy">😆</button>
+                <button class="meh">😊</button>
+                <button class="meh">😑</button>
+                <button class="meh">😢</button>
+                <button class="meh">😨</button>
+                <button class="meh">😡</button>
+                <button class="meh">💩</button>
+            </div> -->
+
+            <img class="human" id="danica" src="BB_DANICA.png">
+
+            <div class="dialogue-box">
+                <div class="main">
+                    <div class="name-tag"> Danica </div>
+                    <div class="dialogue" style="background-image: url('dialogue-bg.png');"> <p>"I am danica"</p>   <p class="date"></p></div>
+
+                </div>
+
+                <div class="next">
+                    <button >Submit</button>
+                </div>
+
+            </div>     
+
+        </form>
+    </div>
+
+
+    <script>
+        document.querySelectorAll('.date').forEach(date => date.textContent = new Date().toLocaleDateString())
+        
+
+        document.querySelector('.next').addEventListener('click',e=>{
+            e.preventDefault();
+            next(2);
+        })
+
+        function next(number){
+            document.querySelectorAll('.big-div').forEach(i=>{
+                i.classList.add('hidden');
+            });
+            document.getElementById(`${number}`).classList.remove('hidden');
+        }
+
+    </script>
 </body>
 </html>
