@@ -15,6 +15,7 @@
     
     <button id="nav" onclick="window.location.href = '/main'"> Home </button>
     <audio id="time_lapse" src="/Time_Lapse.mp3"></audio>
+    <audio id="blublublu" src="/sophia_blublublu.mp3"></audio>
     <button id="mute"> 🔊 </button>
     
 
@@ -121,7 +122,8 @@
         
         $(function () {
             showText("#msg", "Hello Danica, how are you doing today? Send me your complaints and I will listen to them! ", 0, 100);
-
+            const bbb = document.getElementById("blublublu");
+            bbb.play()
         });
 
         
