@@ -10,7 +10,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Bitcount:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="1" class="big-div visible">
+    
+    <button id="nav" onclick="window.location.href = '/main'"> Home </button>
+    <audio id="time_lapse" src="/Time_Lapse.mp3"></audio>
+    <button id="mute"> 🔊 </button>
+    
+
+
+        <div id="1" class="big-div visible">
+
         <form style="background-image: url(form-bg.png);">
             
             <img class="human" id="sophia" src="SOPHIA_BUFF_MAN.png">
@@ -18,8 +26,8 @@
             <div class="dialogue-box">
                 <div class="main">
                     <div class="name-tag"> Sophia </div>
-                    <div class="dialogue" style="background-image: url('dialogue-bg.png');"> <p>"Whatever we say here"</p>   <p class="date"></p></div>
-
+                    <div class="dialogue" style="background-image: url('dialogue-bg.png'); "> <p>"Whatever we say here"</p>   <p class="date"></p></div>
+                    
                 </div>
 
                 <div class="next">
@@ -30,7 +38,9 @@
         </form>
     </div>
 
+
     <div id="2" class="big-div hidden">
+
         <form style="background-image: url(form-bg.png);">
             <!-- <div class="moods">
                 <button class="happy">😆</button>
@@ -77,6 +87,31 @@
             document.getElementById(`${number}`).classList.remove('hidden');
         }
 
+
+        window.addEventListener("DOMContentLoaded", () => {
+            const k_drama_audio = document.getElementById("time_lapse");
+            k_drama_audio.muted = false;
+            k_drama_audio.play()
+        });
+
+        const mute_btn = document.getElementById("mute");
+
+        mute_btn.addEventListener('click', e => {
+            const k_drama_audio = document.getElementById("time_lapse");
+            k_drama_audio.muted = !k_drama_audio.muted;
+
+            if (k_drama_audio.muted) {
+                k_drama_audio.pause()
+                mute_btn.textContent = "🤐";
+            } else {
+                k_drama_audio.play()
+                mute_btn.textContent = "🔊";
+            }
+                
+        });
+        
+
+        
     </script>
 </body>
 </html>

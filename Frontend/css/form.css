@@ -14,6 +14,36 @@ p,h1{
 }
 
 
+#nav {
+    width: 90px;
+    height: 40px;
+    font-family: Bitcount, Arial;
+    font-size: 17px;
+    background-color: #f72d66;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 1%;
+    position: absolute;
+    left: 1%;
+    top: 1%;
+}
+
+#mute{
+    width: 90px;
+    height: 40px;
+    font-family: Bitcount, Arial;
+    font-size: 30px;
+    
+    border: none;
+    background: none;
+
+    cursor: pointer;
+    margin: 1%;
+    position: absolute;
+    right: 1%;
+    top: 1%;
+}
 
 .big-div{
     border: 10px #f78dbb solid;
@@ -100,6 +130,7 @@ form{
     position: relative;
 }
 
+
 .date{
     position: absolute;
     bottom: 3px;
@@ -174,3 +205,4 @@ form{
 .hidden{
     display: none;
 }
+
