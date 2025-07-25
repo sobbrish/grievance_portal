@@ -53,7 +53,7 @@
         const sad_k_drama = document.getElementById("sad_k_drama");
         const sophia_boohoo = document.getElementById("sophia_cry");
         //const sophia_laugh = document.getElementById("sophia_laugh");
-        if (sad_k_drama.muted == true) {
+        if (sad_k_drama.muted == true || sophia_boohoo.muted == true) {
             sad_k_drama.muted = false;
             sad_k_drama.play();
 
@@ -106,9 +106,13 @@
     //     sophia_boohoo.muted = true;
     // });
     
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('submitted') === 'true') {
-        alert('Complaint successfully submitted!');
+     const params = new URLSearchParams(window.location.search);
+        if (params.get('submitted') === 'true') {
+            alert('Complaint successfully submitted!');
+
+            const url = new URL(window.location);
+            url.searchParams.delete('submitted');
+            window.history.replaceState({}, document.title, url.pathname);
     }
         
 </script>
