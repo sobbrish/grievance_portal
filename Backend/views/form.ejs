@@ -101,10 +101,12 @@
 
         mute_btn.addEventListener('click', e => {
             const k_drama_audio = document.getElementById("time_lapse");
+            const bbb = document.getElementById("blublublu");
             k_drama_audio.muted = !k_drama_audio.muted;
 
             if (k_drama_audio.muted) {
                 k_drama_audio.pause()
+                bbb.pause()
                 mute_btn.textContent = "🤐";
             } else {
                 k_drama_audio.play()
