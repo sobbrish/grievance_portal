@@ -13,6 +13,11 @@ p,h1{
     margin: 0;
 }
 
+.chocolate{
+    display: grid;
+    grid-template-columns: 100px 100px 100px 100px 1fr;
+    grid-template-rows: 500px;
+}
 
 .modal{
     position:static;
@@ -29,14 +34,12 @@ p,h1{
 
   visibility: hidden;
   opacity: 0;
-  transition: 0.5s;
   
 }
 
 #popup.active {
   visibility: visible;
   opacity: 1;
-  transition: 0.5s;
 }
 
 .close{
@@ -100,4 +103,11 @@ p,h1{
     width: 90%;
     margin-top: 30px;
     margin-bottom: 10px;
+}
+
+#msg{
+    width: 100%;
+    color: red;
+    font-family: Bitcount, Arial;
+    font-size: 35px;
 }
