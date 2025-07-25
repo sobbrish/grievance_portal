@@ -7,11 +7,10 @@
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-    <button onclick="toggle()">Log out...?</button>
+    <button onclick="popup(true); toggle();">Log out...?</button>
     <div class="modal" id="popup">
         <div class="modal-box">
 
-            <button class="close" onclick="toggle()"> ✖ </button>
             <p>You REALLY want to leave...?</p>
 
             <img id="sophia_sad" src="sophia_sad_man.png" alt="depression">
@@ -22,7 +21,7 @@
 
             <div class="choose">
                 <button class="choice1" onclick="window.location.href = '/logout'">Truely... Log out</button>
-                <button class="choice2" onclick="toggle()"> Go Back</button>
+                <button class="choice2" onclick="popup(false); toggle();"> Go Back</button>
             </div>
         </div>
     </div>
@@ -41,71 +40,73 @@
     
 
 <script>
-    
-    function toggle() {
-        const sophia_img1 = document.getElementById("sophia_sad");
-
-        var blur = document.getElementById('blur');
-        blur.classList.toggle('active');
-        var popup = document.getElementById('popup');
-        popup.classList.toggle('active');
-
-        const sad_k_drama = document.getElementById("sad_k_drama");
-        const sophia_boohoo = document.getElementById("sophia_cry");
-        //const sophia_laugh = document.getElementById("sophia_laugh");
-        if (sad_k_drama.muted == true || sophia_boohoo.muted == true) {
-            sad_k_drama.muted = false;
-            sad_k_drama.play();
-
-            sophia_boohoo.muted = false;
-            sophia_boohoo.play();
-        } else {
-            sad_k_drama.muted = true;
-            sad_k_drama.pause();
-
-            sophia_boohoo.muted = true;
-            sophia_boohoo.pause();
-        }
-    }
 
     const goback_btn = document.querySelector(".choice2");
     const sophia_img1 = document.getElementById("sophia_sad");
     const sophia_laugh = document.getElementById("sophia_laugh");
     const sophia_boohoo = document.getElementById("sophia_cry")
 
+    function popup(pop){
+        if(pop){
+            var blur = document.getElementById('blur');
+            blur.classList.toggle('active');
+            var popup = document.getElementById('popup');
+            popup.classList.toggle('active');
+        }else{
+            var blur = document.getElementById('blur');
+            blur.classList.remove('active');
+            var popup = document.getElementById('popup');
+            popup.classList.remove('active');
+        }
+        
+    }
+    
+    function toggle() {
+        const sophia_img1 = document.getElementById("sophia_sad");
+
+        
+        const sad_k_drama = document.getElementById("sad_k_drama");
+        const sophia_boohoo = document.getElementById("sophia_cry");
+        //const sophia_laugh = document.getElementById("sophia_laugh");
+
+
+        if (sad_k_drama.muted == true) {
+             sad_k_drama.play();
+            sad_k_drama.muted = false;
+           
+            sophia_boohoo.play();
+            sophia_boohoo.muted = false;
+            
+        } else {
+            sad_k_drama.pause();
+            sad_k_drama.muted = true;
+
+            sophia_boohoo.pause();
+            sophia_boohoo.muted = true;
+            
+        }
+    }
+
+    
     let suppressMouseLeave = false;
     sophia_img1.src = "sophia_sad_man.png";
 
     goback_btn.addEventListener('mouseenter', e => {
         sophia_img1.src = "sophia_happy_man_confetti.png";
         sophia_laugh.currentTime = 0; // Rewind to start
-        sophia_laugh.muted = false;
         sophia_laugh.play();
-
-        sophia_boohoo.muted = true;
-        sophia_boohoo.pause();
+        sophia_laugh.muted = false;
+        toggle();
+        
     });
     goback_btn.addEventListener('mouseleave', e => {
         if (suppressMouseLeave) return;
-
         sophia_img1.src = "sophia_sad_man.png";
         sophia_laugh.muted = true;
         sophia_laugh.pause();
-
-        sophia_boohoo.muted = false;
-        sophia_boohoo.play();
+        toggle();
     });
 
-    // goback_btn.addEventListener('change', e => {
-    //     suppressMouseLeave = true;
-
-    //     sophia_laugh.pause();
-    //     sophia_laugh.muted = true;
-
-    //     sophia_boohoo.pause();
-    //     sophia_boohoo.muted = true;
-    // });
-    
      const params = new URLSearchParams(window.location.search);
         if (params.get('submitted') === 'true') {
             alert('Complaint successfully submitted!');
