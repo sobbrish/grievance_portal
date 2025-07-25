@@ -1,4 +1,5 @@
 const express = require('express');
+const session = require('express-session');
 const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -10,17 +11,23 @@ app.use(express.static(path.join(__dirname, '../Frontend')));
 app.use(express.static('Frontend')); //i need this for my audio
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use(session({
+  secret: 'secret123',
+  resave: false,
+  saveUninitialized: true
+}));
+
 // Fake login page 'welcoming page'
 app.get('/', (req, res) => {
   res.render('index'); // login form page
 });
 
 // Route to show main page (after login)
-app.get('/main', (req, res) => {
+app.get('/main', checkAuth, (req, res) => {
   res.render('main'); // only shown after login
 });
 
-//Route to DENY the wrong person (after wrong login)
+//Route to DENY the wrong person (after WRONG login)
 app.get('/DENIED', (req, res) => {
   res.render('DENIED'); // only shown after login
 });
@@ -30,6 +37,7 @@ app.post('/login', (req, res) => {
   const { username, password } = req.body;
 
   if (username === 'danica' && password === '123') {
+    req.session.loggedIn = true;
     res.redirect('/main');
   } else {
     res.redirect('/DENIED');
@@ -37,7 +45,7 @@ app.post('/login', (req, res) => {
   }
 });
 
-app.get('/form', (req,res) =>{
+app.get('/form', checkAuth, (req,res) =>{
     res.render('form')
 });
 
@@ -49,3 +57,16 @@ app.listen(4000, () => {
 //   console.log(`Server running at http://localhost:${port}`);
 // });
 
+function checkAuth(req, res, next) {
+  if (req.session.loggedIn) {
+    next(); // User is logged in, allow access
+  } else {
+    res.redirect('/'); // Redirect to login page
+  }
+}
+
+app.get('/logout', (req, res) => {
+  req.session.destroy(() => {
+    res.redirect('/');
+  });
+});

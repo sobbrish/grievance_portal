@@ -12,3 +12,92 @@ body,html{
 p,h1{
     margin: 0;
 }
+
+
+.modal{
+    position:static;
+    display: flex;
+    justify-content: center;
+     
+}
+
+#popup {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top:20%;
+  left:50%;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.5s;
+  
+}
+
+#popup.active {
+  visibility: visible;
+  opacity: 1;
+  transition: 0.5s;
+}
+
+.close{
+  position:absolute;
+  top: 10px;
+  right: 10px;
+  background-color: white;
+  border: white;
+  border-radius: 20px;
+  width: 25px;
+  height: 25px;
+  text-decoration: none;
+}
+
+.close:hover{
+    background-color: red;
+    color: white;
+}
+
+.modal-box{
+    position: absolute;
+    top: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 0 50px 0;
+    /* background-color: lightpink; */
+    background-image: linear-gradient(to bottom right, rgb(26, 20, 49), rgba(56, 44, 44, 0.562));
+    border: 10px black double;
+    border-radius: 20px;
+    color: red;
+    font-family: Bitcount, Arial;
+    font-size: 35px;
+    width: 550px;
+    padding: 20px 40px;
+}
+
+.choose{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 30%;
+}
+.choice1{ /*BAD button*/
+    background: #a52d6f;
+    color: white;
+    padding: 10px 40px;
+    font-family: Bitcount, Arial;
+}
+.choice2{ /*GOOD buttons */
+    background: #df0c80;
+    color: white;
+    padding: 10px 40px;
+    font-family: Bitcount, Arial;
+    font-size: 20px;
+}
+
+.sophia_sad{
+    width: 90%;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
