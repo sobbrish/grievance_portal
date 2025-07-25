@@ -44,7 +44,7 @@
 
     <div id="2" class="big-div hidden">
 
-        <form style="background-image: url(form-bg.png);">
+        <form class="submit-form" style="background-image: url(form-bg.png);">
             <!-- <div class="moods">
                 <button class="happy">😆</button>
                 <button class="meh">😊</button>
@@ -60,12 +60,15 @@
             <div class="dialogue-box">
                 <div class="main">
                     <div class="name-tag"> Danica </div>
-                    <div class="dialogue" style="background-image: url('dialogue-bg.png');"> <p>"I am danica"</p>   <p class="date"></p></div>
+                    <div class="dialogue" style="background-image: url('dialogue-bg.png');"> 
+                        <textarea id="complaint" placeholder="Type in your complains here..."></textarea>   
+                        <p class="date"></p>
+                    </div>
 
                 </div>
 
                 <div class="next">
-                    <button >Submit</button>
+                    <button type="submit">Submit</button>
                 </div>
 
             </div>     
@@ -126,6 +129,33 @@
             showText("#msg", "Hello Danica, how are you doing today? Send me your complaints and I will listen to them! ", 0, 100);
             const bbb = document.getElementById("blublublu");
             bbb.play()
+        });
+
+
+        let complaint = document.getElementById('complaint');
+
+        document.querySelector('.submit-form').addEventListener('submit', e=>{
+            e.preventDefault();
+
+
+            let formValues = {
+                complaint: complaint.value
+            }
+
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', '/form');
+            xhr.setRequestHeader('content-type', 'application/json');
+            xhr.onload = function(){
+                console.log(xhr.responseText);
+                if(xhr.responseText == 'success'){
+                    window.location.href = '/main?submitted=true';
+                }else{
+                    alert('Somthing went wrong, try again!');
+                }
+            }
+
+            xhr.send(JSON.stringify(formValues));
+
         });
 
         

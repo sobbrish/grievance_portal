@@ -106,6 +106,10 @@
     //     sophia_boohoo.muted = true;
     // });
     
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('submitted') === 'true') {
+        alert('Complaint successfully submitted!');
+    }
         
 </script>
 </body>

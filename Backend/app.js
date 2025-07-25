@@ -3,13 +3,14 @@ const session = require('express-session');
 const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
-
+const nodemailer = require('nodemailer');
 // Setup
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, '../Frontend')));
 app.use(express.static('Frontend')); //i need this for my audio
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json())
 
 app.use(session({
   secret: 'secret123',
@@ -47,6 +48,34 @@ app.post('/login', (req, res) => {
 
 app.get('/form', checkAuth, (req,res) =>{
     res.render('form')
+});
+
+app.post('/form',(req,res)=>{
+  console.log(req.body);
+  let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user:'xiaohan.zhang3@gmail.com',
+      pass: 'agnp sfzs artf omox'
+    }
+  });
+
+  let mailOptions = {
+    email:'danicajulia.lisaca@gmail.com',
+    to: 'xiaohan.zhang3@gmail.com',
+    subject:'Complaint from danica!!!',
+    text: req.body.complaint
+  }
+
+  transporter.sendMail(mailOptions, (error, info)=>{
+    if(error){
+      console.log(error);
+      res.send('error')
+    }else{
+      console.log('Complaint Sent: ' + info.response);
+      res.send('success');
+    }
+  })
 });
 
 app.listen(4000, () => {
