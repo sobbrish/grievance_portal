@@ -13,10 +13,50 @@ p,h1{
     margin: 0;
 }
 
+.big-div{
+    border: 10px #f78dbb solid;
+    padding: 30px 40px;
+    height: 100vh;
+    
+}
+
+.nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+}
+
+.log-out{
+    background: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.log-out:hover{
+    text-decoration: underline;
+}
+
+.dani-pfp{
+    width: 50px;
+    border: 2px rgba(255, 192, 203, 0.76) solid;
+    border-radius: 25px;
+    margin-left: 20px;
+
+}
+
 .chocolate{
+    margin-top: 150px;
     display: grid;
-    grid-template-columns: 100px 100px 100px 100px 1fr;
-    grid-template-rows: 500px;
+    grid-template-columns: repeat(4,300px);
+    gap: 4rem 5rem;
+    justify-content: center;
+}
+
+.chocolate button{
+    width: 100%;
+    height: 200px;
 }
 
 .modal{
@@ -82,21 +122,45 @@ p,h1{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
-    gap: 30%;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: -10px;
 }
 .choice1{ /*BAD button*/
-    background: #a52d6f;
-    color: white;
-    padding: 10px 40px;
-    font-family: Bitcount, Arial;
-}
-.choice2{ /*GOOD buttons */
-    background: #df0c80;
-    color: white;
-    padding: 10px 40px;
+    background: #4703209a;
+    color: rgb(240, 191, 191);
+    padding: 13px 90px;
     font-family: Bitcount, Arial;
     font-size: 20px;
+    background-size: cover;
+    background-position: center;
+    border: 4px rgb(54, 5, 5) groove;
+    text-shadow:
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
+     cursor: pointer;
+}
+.choice2{ /*GOOD buttons */
+    background: #d6a7c1;
+    color: rgb(241, 220, 241);
+    padding: 10px 150px;
+    font-family: Bitcount, Arial;
+    font-size: 20px;
+    border: 4px #e48dbc dashed;
+    cursor: pointer;
+}
+
+.choice1:hover{
+    background-color:#470320 ;
+     color: rgba(240, 191, 191, 0.699);
+}
+
+.choice2:hover{
+    border: 4px #e48dbc solid;
+    text-decoration: underline;
+    color: white;
 }
 
 #sophia_sad{
