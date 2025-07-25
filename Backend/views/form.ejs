@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="next">
-                    <button>Next</button>
+                    <button id="blublublu_stop">Next</button>
                 </div>
 
             </div>
@@ -78,9 +78,16 @@
 
 
     <script>
+        const next_btn = document.getElementById("blublublu_stop");
+        const bbb = document.getElementById("blublublu");
+        next_btn.addEventListener("click", e =>{
+            bbb.muted = true;
+            bbb.pause();
+        })
+
+
         document.querySelectorAll('.date').forEach(date => date.textContent = new Date().toLocaleDateString())
         
-
         document.querySelector('.next').addEventListener('click',e=>{
             e.preventDefault();
             next(2);
