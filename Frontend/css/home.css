@@ -21,6 +21,7 @@ p,h1{
     padding: 30px 40px;
     height: 100vh;
     
+    
 }
 
 .big-div#blur.active {
@@ -96,3 +97,13 @@ p,h1{
   transform: translateY(2px);
 }
 
+@media (max-width:700px) {
+  .title{
+    font-size: 70px;
+    
+  }
+
+  .description{
+      font-size: 30px;
+  }
+}

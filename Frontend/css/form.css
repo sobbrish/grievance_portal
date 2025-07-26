@@ -89,13 +89,13 @@ form{
     flex: 1;
 }
 
-.next{
+.submit{
     flex-shrink: 0;
     display: flex;
     align-items: center;
 }
 
-.next button{
+.submit button{
     /* padding: 10px 15px; */
     width: 90px;
     height: 40px;
@@ -107,8 +107,44 @@ form{
     cursor: pointer;
 }
 
-.next button:hover{
+.submit button:hover{
     opacity: 0.8;
+}
+
+.next,.choices-btns,.home, .next1{
+    position: absolute;
+    top: 49%;
+    margin-right: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.next button, .choices-btns button, .home button, .next1 button{
+    background-color: #fde6f3;
+    border: 4px #fdcde8 solid;
+    padding: 10px 195px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.next button:hover, .choices-btns button:hover, .home button:hover, .next1 button:hover{
+    background-color: white;
+    color:#fdcde8;
+}
+
+.home button{
+    padding: 10px 170px;
+}
+
+.choices-btns{
+    top: 30%;
+}
+
+
+.choices-btns button{
+    padding: 10px 158px;
 }
 
 .dialogue{
@@ -208,6 +244,16 @@ form{
      1px  1px 0 rgba(0, 0, 0, 0.3);
 }
 
+.choices{
+    width: 100%;
+    max-width: 1000px;
+    margin-bottom: -52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
 
 .human{
     width: 50%;
@@ -215,13 +261,18 @@ form{
     margin-right: 50px;
 }
 
-#sophia{
-    margin-bottom: -52px;
+#danica{
+    margin-bottom: 12px;
 }
 
-#danica{
-    margin-bottom: -43px;
+.bubble{
+    position: absolute;
+    top: -60px;
+    right: 70px;
+    width: 300px;
 }
+
+
 
 .visible{
     display:flex;

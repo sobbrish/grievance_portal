@@ -13,7 +13,7 @@
 </head>
 <body>
     
-    <button id="nav" onclick="window.location.href = '/main'"> Home </button>
+    <button id="nav" onclick="home(event)"> Home </button>
     <audio id="time_lapse" src="/Time_Lapse.mp3"></audio>
     <audio id="blublublu" src="/sophia_blublublu.mp3"></audio>
     <button id="mute"> 🔊 </button>
@@ -24,18 +24,38 @@
 
         <form style="background-image: url(form-bg.png);">
             
-            <img class="human" id="sophia" src="SOPHIA_BUFF_MAN.png">
+            <div class="choices">
+                <img class="human" id="sophia" src="SOPHIA_BUFF_MAN.png">
+                <img class="bubble" src="thought-bubble.png">
+
+                <div class="choices-btns hidden">
+                    <button onclick="choice(3,event)">I want a date!</button>
+                    <button onclick="choice(2,event)">Complain to Sophia</button>
+                    <button onclick="choice(1,event)">Human service</button>
+                </div>
+
+            </div>
+
+           <div class="next hidden">
+                <button>Go to form</button>
+            </div>
+
+            <div class="next1 hidden">
+                <button>Go to form</button>
+            </div>
+
+            <div class="home hidden">
+                <button onclick="home(event)">Go back home</button>
+            </div>
 
             <div class="dialogue-box">
                 <div class="main">
                     <div class="name-tag"> Sophia </div>
-                    <div class="dialogue" style="background-image: url('dialogue-bg.png'); "> <p id="msg"></p>   <p class="date"></p></div>
+                    <div class="dialogue" style="background-image: url('dialogue-bg.png'); "> <p onload="choice(0)" id="msg"></p>   <p class="date"></p></div>
                     
                 </div>
 
-                <div class="next">
-                    <button id="blublublu_stop">Next</button>
-                </div>
+                
 
             </div>
         </form>
@@ -55,7 +75,13 @@
                 <button class="meh">💩</button>
             </div> -->
 
-            <img class="human" id="danica" src="BB_DANICA.png">
+            <div class="choices">
+                <img class="human" id="danica" src="BB_DANICA.png">
+                <img class="bubble" src="thought-bubble.png">
+
+            </div>
+
+
 
             <div class="dialogue-box">
                 <div class="main">
@@ -67,7 +93,47 @@
 
                 </div>
 
-                <div class="next">
+                <div class="submit">
+                    <button type="submit">Submit</button>
+                </div>
+
+            </div>     
+
+        </form>
+    </div>
+
+     <div id="3" class="big-div hidden">
+
+        <form class="submit-form" style="background-image: url(form-bg.png);">
+            <!-- <div class="moods">
+                <button class="happy">😆</button>
+                <button class="meh">😊</button>
+                <button class="meh">😑</button>
+                <button class="meh">😢</button>
+                <button class="meh">😨</button>
+                <button class="meh">😡</button>
+                <button class="meh">💩</button>
+            </div> -->
+
+            <div class="choices">
+                <img class="human" id="danica" src="BB_DANICA.png">
+                <img class="bubble" src="thought-bubble.png">
+
+            </div>
+
+
+
+            <div class="dialogue-box">
+                <div class="main">
+                    <div class="name-tag"> Danica </div>
+                    <div class="dialogue" style="background-image: url('dialogue-bg.png');"> 
+                        <!-- <textarea id="complaint" placeholder="Type in your complains here..."></textarea>    -->
+                        <p class="date"></p>
+                    </div>
+
+                </div>
+
+                <div class="submit">
                     <button type="submit">Submit</button>
                 </div>
 
@@ -78,20 +144,18 @@
 
 
     <script>
-        const next_btn = document.getElementById("blublublu_stop");
+
+        function home(event){
+            event.preventDefault();
+            window.location.href = '/main'
+        };
+
+     
         const bbb = document.getElementById("blublublu");
-        next_btn.addEventListener("click", e =>{
-            bbb.muted = true;
-            bbb.pause();
-        })
+      
 
 
         document.querySelectorAll('.date').forEach(date => date.textContent = new Date().toLocaleDateString())
-        
-        document.querySelector('.next').addEventListener('click',e=>{
-            e.preventDefault();
-            next(2);
-        })
 
         function next(number){
             document.querySelectorAll('.big-div').forEach(i=>{
@@ -101,10 +165,14 @@
         }
 
 
-        window.addEventListener("DOMContentLoaded", () => {
+        window.addEventListener("DOMContentLoaded", (e) => {
             const k_drama_audio = document.getElementById("time_lapse");
             k_drama_audio.muted = false;
             k_drama_audio.play()
+            msgEl.textContent = ""; 
+            index = 0;
+            showText(msgEl, text, 100);
+            audio.play();
         });
 
         const mute_btn = document.getElementById("mute");
@@ -124,19 +192,95 @@
             }
                 
         });
-        
-        var showText = function (target, message, index, interval) {   
-            if (index < message.length) {
-                $(target).append(message[index++]);
-                setTimeout(function () { showText(target, message, index, interval); }, interval);
-            }
+
+        const dialogue = document.querySelector('.dialogue');
+        const msgEl = document.getElementById('msg');
+        const audio = document.getElementById("blublublu");
+        const choices = document.querySelector('.choices-btns');
+
+        let isTyping = false;
+        let typingTimer = null;
+        let text = "Hello Danica, how are you doing today? Send me your complaints and I will listen to them!";
+        let index = 0;
+        let number;
+
+        function showText(target, message, interval) {
+            isTyping = true;
+            typingTimer = setInterval(() => {
+                if (index < message.length) {
+                    target.textContent += message[index++];
+                } else {
+                    clearInterval(typingTimer);
+                    isTyping = false;
+                    if(number == 3){
+                        document.querySelector('.next1').classList.remove('hidden');
+                    }else if(number==2){
+                        document.querySelector('.next').classList.remove('hidden');
+                    }else if(number==1){
+                        document.querySelector('.home').classList.remove('hidden');
+                    }else{
+                        choices.classList.remove('hidden');
+                    }
+                    
+                }
+            }, interval);
         }
-        
-        $(function () {
-            showText("#msg", "Hello Danica, how are you doing today? Send me your complaints and I will listen to them! ", 0, 100);
-            const bbb = document.getElementById("blublublu");
-            bbb.play()
+
+
+        dialogue.addEventListener('click', () => {
+            if (isTyping) {
+                clearInterval(typingTimer);
+                msgEl.textContent = text;
+                isTyping = false;
+                if(number == 3){
+                    document.querySelector('.next1').classList.remove('hidden');
+                }else if(number==2){
+                    document.querySelector('.next').classList.remove('hidden');
+                }else if(number==1){
+                    document.querySelector('.home').classList.remove('hidden');
+                }else{
+                    choices.classList.remove('hidden');
+                }
+                audio.pause();
+            }
         });
+
+        function choice(num, event){
+            event.preventDefault();
+            choices.style.display = "none";
+            msgEl.textContent = "";
+            index = 0;
+            number = num;
+            document.querySelector('.next').addEventListener('click',e=>{
+                e.preventDefault();
+                next(num);
+            })
+
+            document.querySelector('.next1').addEventListener('click',e=>{
+                e.preventDefault();
+                console.log(num)
+                next(num);
+            })
+            switch(num){
+                case 1:
+                    text = "Mwah... I'd be absolutely delighted to go on a date with you, Danica."
+                    showText(msgEl, text, 100);
+                    break;
+                case 2:
+                    text = "Huff... fine, send me your complaint. Let's see what you're whining about this time, Princess Danica."
+                    msgEl.textContent = "";
+                    showText(msgEl, text, 100);
+                    
+                    break;
+                case 3:
+                    text = "Wow, bypassing the system just to talk to me? Can't say I blame you. Here's my number: 0223584658 — use it wisely, Danica."
+                 
+                    showText(msgEl, text, 100);
+                    break;
+
+                
+            }
+        };
 
 
         let complaint = document.getElementById('complaint');
@@ -165,6 +309,8 @@
 
         });
 
+
+        
         
     </script>
 </body>
