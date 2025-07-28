@@ -20,8 +20,7 @@
 
     function popup(pop){
         var msg = document.querySelector("#msg");
-        var blur = document.getElementById('blur');
-        var popup = document.getElementById('popup');
+        
 
         function showText (target, message, index, interval) {
             if (index < message.length) {
@@ -30,13 +29,14 @@
             }
         }
 
-         msg.textContent = "";
+        msg.textContent = "";
 
         if(pop){
-
+            var blur = document.getElementById('blur');
+            var popup = document.getElementById('popup');
             blur.classList.toggle('active');
-
             popup.classList.toggle('active');
+
 
             $(function () {
             showText("#msg", "You REALLY want to leave...? ", 0, 50);
@@ -55,9 +55,8 @@
     }
 
     function toggle() {
+
         const sophia_img1 = document.getElementById("sophia_sad");
-
-
         const sad_k_drama = document.getElementById("sad_k_drama");
         const sophia_boohoo = document.getElementById("sophia_cry");
         //const sophia_laugh = document.getElementById("sophia_laugh");
@@ -100,7 +99,7 @@
         toggle();
     });
 
-     const params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(window.location.search);
         if (params.get('submitted') === 'true') {
             alert('Complaint successfully submitted!');
 
@@ -108,5 +107,7 @@
             url.searchParams.delete('submitted');
             window.history.replaceState({}, document.title, url.pathname);
     }
+
+
 
 
