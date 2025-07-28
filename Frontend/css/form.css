@@ -121,7 +121,7 @@ form{
 }
 
 .next button, .choices-btns button, .home button, .next1 button{
-    background-color: #fde6f3;
+    background-color: #fde6f3ea;
     border: 4px #fdcde8 solid;
     padding: 10px 195px;
     font-size: 20px;
@@ -130,7 +130,7 @@ form{
 }
 
 .next button:hover, .choices-btns button:hover, .home button:hover, .next1 button:hover{
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.938);
     color:#fdcde8;
 }
 
@@ -263,6 +263,10 @@ form{
 
 #danica{
     margin-bottom: 12px;
+}
+
+.love{
+    margin-bottom: 10px;
 }
 
 .bubble{
