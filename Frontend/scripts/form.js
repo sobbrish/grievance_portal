@@ -124,15 +124,17 @@
                     sophia_img.classList.add('love');
                     break;
                 case 2:
-                    sophia_img.src = "sophia_love.png";
+                    sophia_img.src = "SOPHIA_annoyed.png";
                     text = "Huff... fine, send me your complaint. Let's see what you're whining about this time, Princess Danica."
                     msgEl.textContent = "";
                     showText(msgEl, text, 100);
+                    sophia_img.classList.add('annoyed');
                     break;
                 case 1:
-                    sophia_img.src = "sophia_love.png";
+                    sophia_img.src = "SOPHIA_call_me.png";
                     text = "Wow, bypassing the system just to talk to me? Can't say I blame you. Here's my number: 0223584658 — use it wisely, Danica."
                     showText(msgEl, text, 100);
+                    sophia_img.classList.add('call');
                     break;
 
                 
