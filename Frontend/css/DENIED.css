@@ -2,14 +2,48 @@
     box-sizing: border-box;
 }
 
+@font-face {
+  font-family: 'Swiss 721';
+  src: url('../fonts/Swiss721Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 body, html {
     background-color: #000000;
     color: #ff0000;
-    font-family: Arial;
+    font-family: 'Swiss 721', sans-serif;
     margin: 0;
+    /* overflow: hidden; */
 }
 
 p, h1 {
     text-align: center;
     font-size: 60px;
 }
+
+#imgs{
+    display: flex;
+    flex: row;
+    justify-content: center;
+
+}
+#stop{
+    width: 30%;
+    height: 20%;
+}
+#face{
+    display: block;
+    margin: auto;
+    width: 20%;
+    visibility: hidden;
+    opacity: 1;
+    transition: transform .1s ease-out, filter .1s ease-out, opacity .5s ease-out;
+}
+#DONOTENTER{
+    width: 30%;
+    height: 30%;
+}
+
+

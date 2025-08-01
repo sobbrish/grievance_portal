@@ -11,27 +11,32 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <div class="big-div">
+    <div class="big-div" id="blur">
         <div class="nav">
             <button class="log-out" onclick="toggle();">Log out...?</button>
             <img class="dani-pfp" src="dani.jpg" alt="dani-pfp">
         </div>
 
-        <div class="modal" id="popup">
-            <div class="modal-box">
+    <div class="modal" id="popup">
+        <div class="modal-box">
 
-                <div class="msg-space">
-                    <p id="msg"></p>
+            <div class="msg-space">
+                <p id="msg"></p>
 
-                </div>
+            </div>
 
 
-                <img id="sophia_sad" src="sophia_sad_man.png" alt="depression">
+            <img id="sophia_sad" src="sophia_sad_man.png" alt="depression">
 
-                <audio id="sad_k_drama" src="/Sad_Instrumental.mp3" loop autoplay muted></audio>
-                <audio id="sophia_cry" src="/sophia_cry.m4a" autoplay muted></audio>
-                <audio id="sophia_laugh" src="/sophia_laugh.mp3" autoplay muted></audio>
+            <audio id="sad_k_drama" src="/Sad_Instrumental.mp3" loop autoplay muted></audio>
+            <audio id="sophia_cry" src="/sophia_cry.m4a" autoplay muted></audio>
+            <audio id="sophia_laugh" src="/sophia_laugh.mp3" autoplay muted></audio>
 
+            <div class="choose">
+                <button style="background-image: url(blood.png);" class="choice1" onclick="window.location.href = '/logout'">Truely... Log out</button>
+                <button class="choice2" onclick="popup(false); toggle();"> Go Back</button>
+            </div>
+        </div>
                 <div class="choose">
                     <button style="background-image: url(blood.png);" class="choice1" onclick="window.location.href = '/logout'">Truely... Log out</button>
                     <button class="choice2" onclick="popup(false); toggle();"> Go Back</button>
