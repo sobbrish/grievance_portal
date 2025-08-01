@@ -219,3 +219,17 @@ function home(event){
             xhr.send(JSON.stringify(formValues));
 
         });
+
+
+const submit_btn = document.querySelectorAll(".submit");
+
+submit_btn.forEach(button => {
+    button.addEventListener("click", (e) => {
+        var blur = document.getElementById('blur');
+        var popup = document.getElementById('popup');
+        blur.classList.toggle('active');
+        popup.classList.toggle('active');
+
+        button.disabled = true; //only clickable once
+    }, { once: true });
+});
