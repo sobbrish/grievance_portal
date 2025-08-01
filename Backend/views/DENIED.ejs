@@ -9,13 +9,79 @@
 <body>
     <h1> You are NOT welcome here. </h1>
     <p> Access denied. Only Danica can use this site. </p>
+
+    <audio id="crossing_bell" src="Train Crossing Bell sound effect.mp3" autoplay muted></audio>
+    <audio id="jumpscare" src="Jumpscare Sound Effect.mp3" autoplay muted></audio>
     <audio id="dong" src="/idgaf-your-banned.mp3" loop autoplay muted></audio>
 
+    <div id="imgs">
+        <img id="stop" src="stop.png">
+        <img id="face" src="cursedemoji.jpg">
+        <img id="DONOTENTER" src="DONOTENTER.png">
+    </div>
+
     <script>
+        let crossing_bell = document.getElementById("crossing_bell");
+        //let dong = document.getElementById("dong");
+        let jumpscare = document.getElementById("jumpscare");
+        function triggerJumpscare() {
+            
+            jumpscare.muted = false;
+            jumpscare.volume = 1;
+            jumpscare.play();
+
+            setTimeout(() => {
+                const img = document.getElementById('face');
+                img.style.visibility = 'visible';
+                img.style.transform = 'scale(4)';
+                //img.style.transition = 'transform .1s ease-out, filter .1s ease-out';
+                img.style.filter = 'brightness(1.5)';
+
+                setTimeout(() => {
+                    img.style.opacity = '0';
+                }, 3000);
+
+            }, 666);
+            
+
+            // function dongdongdong() { //fade in audio
+            //     setInterval(() => {
+            //         dong.muted = false;
+            //         dong.play();
+            //         if (dong.volume < 1) {
+            //             dong.volume += 0.05;
+            //         } else { // Stop the setInterval when 1 is reached
+            //             clearInterval(fadeout);
+            //         }
+            //         console.log(dong.volume);
+            //     }, 1000);
+            // };
+            
+            // dong.volume = 0.10;
+            // setTimeout(() => {
+            //     dongdongdong();
+            // }, 1333);
+
+        }
+        setTimeout(triggerJumpscare, 5444);
+
+
         window.addEventListener("DOMContentLoaded", () => {
-            const asdf = document.getElementById("dong");
-            asdf.muted = false;
-            asdf.play()
+            const donotenter = document.getElementById('DONOTENTER');
+            let flag = false;
+            setInterval(() => {
+                if (!flag) {
+                    donotenter.src = 'DONOTENTER2.png';
+                } else {
+                    donotenter.src = 'DONOTENTER.png';
+                }
+                flag = !flag;
+            }, 500);
+        });
+
+        window.addEventListener("DOMContentLoaded", () => {
+            crossing_bell.muted = false;
+            crossing_bell.play();
         });       
     </script>
 </body>
