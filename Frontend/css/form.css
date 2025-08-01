@@ -167,6 +167,7 @@ form{
 }
 
 
+
 .date{
     position: absolute;
     bottom: 3px;
@@ -197,29 +198,71 @@ form{
 }
 
 
-/* 
+
 .moods {
   display: flex;
-  flex-wrap: wrap;
+  position: absolute;
+  top: 10px;
+  right: 100px;
+  flex-direction: column;
   gap: 10px;
   justify-content: center;
   margin-bottom: 20px;
+  z-index: 999;
 }
 
-.moods button {
+.mood-title{
+    font-size: 35px;
+    display: flex;            
+    justify-content: center;   
+    align-items: center;       
+    width: 250px;   
+    
+}
+
+.mood-title.active{
+    text-decoration:4px pink underline;
+
+}
+
+.emoji {
+  position: absolute;
+  top: 40px;
+  display: none;
+  cursor: pointer;
+  
+}
+
+.emoji.active {
+  display: grid;
+  grid-template-columns: repeat(3, 70px);
+  width: 200px;
+  height: 200px;
+  background: #fff;
+  border: 1px #f72d66 double;
+  border-radius: 4px;
+  box-shadow: 30px 50px 100px rgba(50, 50, 93, 0.158),
+              30px 15px 35px rgba(50,50,93,.15),
+              30px 5px 15px rgba(0,0,0,.1);
+  transition: all 0.3s, opacity 0.1s, transform 0.2s;
+  transform-origin: 50% 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.emoji a {
   font-size: 1.8rem;
   padding: 10px;
   border: none;
   background: transparent;
-  cursor: pointer;
   transition: transform 0.2s ease;
 }
 
-.moods button:hover {
+.emoji a:hover {
   transform: scale(1.2);
-} */
+}
 
-#complaint{
+.text-area{
     background: transparent;
     width: 100%;
     height: 85%;
@@ -235,7 +278,7 @@ form{
      1px  1px 0 black;
 }
 
-#complaint::placeholder{
+.text-area::placeholder{
     color: rgba(255, 255, 255, 0.6);
     text-shadow:
     -1px -1px 0 rgba(0, 0, 0, 0.3),
@@ -266,6 +309,9 @@ form{
 }
 
 .love{
+    margin-bottom: 10px;
+}
+.call{
     margin-bottom: 10px;
 }
 

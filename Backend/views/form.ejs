@@ -63,30 +63,37 @@
 
     <div id="2" class="big-div hidden">
 
-        <form class="submit-form" style="background-image: url(form-bg.png);">
-            <!-- <div class="moods">
-                <button class="happy">😆</button>
-                <button class="meh">😊</button>
-                <button class="meh">😑</button>
-                <button class="meh">😢</button>
-                <button class="meh">😨</button>
-                <button class="meh">😡</button>
-                <button class="meh">💩</button>
-            </div> -->
+        <form class="submit-form" id="complain" style="background-image: url(form-bg.png);">
+            
 
             <div class="choices">
                 <img class="human" id="danica" src="BB_DANICA.png">
                 <img class="bubble" src="thought-bubble.png">
+                <div class="moods">
+                    <div class="mood-title">
+                        <p>My mood...</p>
+                    </div>
+                    <div class="emoji">
+                        <a data-mood="😆">😆</a>
+                        <a data-mood="😊">😊</a>
+                        <a data-mood="😑">😑</a>
+                        <a data-mood="😢">😢</a>
+                        <a data-mood="😨">😨</a>
+                        <a data-mood="😡">😡</a>
+                        <a data-mood="💩">💩</a>
+
+                    </div>
+                    
+                </div>
 
             </div>
-
 
 
             <div class="dialogue-box">
                 <div class="main">
                     <div class="name-tag"> Danica </div>
                     <div class="dialogue" style="background-image: url('dialogue-bg.png');"> 
-                        <textarea id="complaint" placeholder="Type in your complains here..."></textarea>   
+                        <textarea class="text-area" id="complaint" placeholder="Type in your complains here..."></textarea>   
                         <p class="date"></p>
                     </div>
 
@@ -103,20 +110,10 @@
 
      <div id="3" class="big-div hidden">
 
-        <form class="submit-form" style="background-image: url(form-bg.png);">
-            <!-- <div class="moods">
-                <button class="happy">😆</button>
-                <button class="meh">😊</button>
-                <button class="meh">😑</button>
-                <button class="meh">😢</button>
-                <button class="meh">😨</button>
-                <button class="meh">😡</button>
-                <button class="meh">💩</button>
-            </div> -->
+        <form class="submit-form" id="dateSophia" style="background-image: url(form-bg.png);">
 
             <div class="choices">
                 <img class="human" id="danica" src="BB_DANICA.png">
-                <img class="bubble" src="thought-bubble.png">
 
             </div>
 
@@ -126,7 +123,14 @@
                 <div class="main">
                     <div class="name-tag"> Danica </div>
                     <div class="dialogue" style="background-image: url('dialogue-bg.png');"> 
-                        <!-- <textarea id="complaint" placeholder="Type in your complains here..."></textarea>    -->
+                        <label for="date">I want to go on</label>
+                        <input id="date" type="date">
+                        <label for="time">at</label>
+                        <input id="time" type="time">
+                        <label for="where">to</label>
+                        <input id="where" type="text">
+                        <label for="where">.</label>
+                        <textarea class="text-area" id="comment" placeholder="Extra comments?"></textarea>   
                         <p class="date"></p>
                     </div>
 

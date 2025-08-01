@@ -101,7 +101,7 @@
 
     const params = new URLSearchParams(window.location.search);
         if (params.get('submitted') === 'true') {
-            alert('Complaint successfully submitted!');
+            alert('Successfully submitted!');
 
             const url = new URL(window.location);
             url.searchParams.delete('submitted');

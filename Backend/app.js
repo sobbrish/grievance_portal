@@ -46,12 +46,6 @@ app.post('/login', (req, res) => {
   }
 });
 
-app.get('/form', checkAuth, (req,res) =>{
-    res.render('form')
-});
-
-app.post('/form',(req,res)=>{
-  console.log(req.body);
   let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -60,11 +54,18 @@ app.post('/form',(req,res)=>{
     }
   });
 
+app.get('/form', checkAuth, (req,res) =>{
+    res.render('form')
+});
+
+app.post('/form',(req,res)=>{
+
+
   let mailOptions = {
-    email:'danicajulia.lisaca@gmail.com',
+    from:'danicajulia.lisaca@gmail.com',
     to: 'xiaohan.zhang3@gmail.com',
     subject:'Complaint from danica!!!',
-    text: req.body.complaint
+    text: `Mood: ${req.body.mood}\nComplaint: ${req.body.complaint}`
   }
 
   transporter.sendMail(mailOptions, (error, info)=>{
@@ -78,13 +79,35 @@ app.post('/form',(req,res)=>{
   })
 });
 
+app.get('/form2', checkAuth, (req,res) =>{
+    res.render('form2')
+});
+
+app.post('/form2',(req,res)=>{
+
+
+  let mailOptions = {
+    from:'danicajulia.lisaca@gmail.com',
+    to: 'xiaohan.zhang3@gmail.com',
+    subject:'Date with danica!!!',
+    text: `Date: ${req.body.date}\nTime: ${req.body.time}\nPlace: ${req.body.place}\nComment: ${req.body.comment}`
+  }
+
+  transporter.sendMail(mailOptions, (error, info)=>{
+    if(error){
+      console.log(error);
+      res.send('error')
+    }else{
+      console.log('Date Sent: ' + info.response);
+      res.send('success');
+    }
+  })
+});
+
 app.listen(4000, () => {
   console.log('Server running at http://localhost:4000');
 });
 
-// app.listen(port, () => {
-//   console.log(`Server running at http://localhost:${port}`);
-// });
 
 function checkAuth(req, res, next) {
   if (req.session.loggedIn) {

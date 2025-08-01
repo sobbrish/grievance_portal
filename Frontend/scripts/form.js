@@ -1,4 +1,4 @@
- function home(event){
+function home(event){
             event.preventDefault();
             window.location.href = '/main'
         };
@@ -141,19 +141,71 @@
             }
         };
 
+        const emoji = document.querySelector('.emoji');
+        const emojis = document.querySelectorAll('[data-mood]');
+        const moodTitle = document.querySelector('.mood-title');
+
+        document.querySelector('.moods').addEventListener('mouseenter', e=>{
+            e.preventDefault();
+             emoji.classList.add('active');
+             moodTitle.classList.add('active');
+        });
+         document.querySelector('.moods').addEventListener('mouseleave', e=>{
+            e.preventDefault();
+             emoji.classList.remove('active');
+             moodTitle.classList.remove('active');
+
+        });
+
+        emojis.forEach(emo => { emo.addEventListener('click', e => {
+            e.preventDefault();
+            const value = emo.dataset.mood
+            moodTitle.textContent = value;
+        })});
+
+        
 
         let complaint = document.getElementById('complaint');
 
-        document.querySelector('.submit-form').addEventListener('submit', e=>{
+        document.querySelector('#complain').addEventListener('submit', e=>{
             e.preventDefault();
 
 
             let formValues = {
-                complaint: complaint.value
+                complaint: complaint.value,
+                mood: moodTitle.textContent
             }
 
             let xhr = new XMLHttpRequest();
             xhr.open('POST', '/form');
+            xhr.setRequestHeader('content-type', 'application/json');
+            xhr.onload = function(){
+                console.log(xhr.responseText);
+                if(xhr.responseText == 'success'){
+                    window.location.href = '/main?submitted=true';
+                }else{
+                    alert('Somthing went wrong, try again!');
+                }
+            }
+
+            xhr.send(JSON.stringify(formValues));
+
+        });
+
+        let comment = document.getElementById('comment');
+
+        document.querySelector('#dateSophia').addEventListener('submit', e=>{
+            e.preventDefault();
+            
+            let formValues = {
+                comment: comment.value,
+                date: document.getElementById('date').value,
+                time: document.getElementById('time').value,
+                place: document.getElementById('where').value
+            }
+
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', '/form2');
             xhr.setRequestHeader('content-type', 'application/json');
             xhr.onload = function(){
                 console.log(xhr.responseText);
